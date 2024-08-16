@@ -9,7 +9,7 @@
 #include <thread>
 
 int getRandom(){
-    std::random_device rd; //seed generator
+    std::random_device rd;
     std::mt19937 gen(rd());
 
     std::uniform_int_distribution<> distr(0,12);
@@ -25,6 +25,7 @@ int main(){
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::tm* now_tm = std::localtime(&now_c);
 
+    //change the following 2 lines to suit your needs
     std::string fileName = "log.txt";
     std::string filePathCommand = "cd .. && cd The-test-subject/ ";
 
