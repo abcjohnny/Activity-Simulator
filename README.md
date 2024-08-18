@@ -1,5 +1,7 @@
 # Activity-Simulator
 
+#Setting up
+
 Setup Github SSH key access on the machine you plan to use this on.
 
 Run these commands to make sure you get the commits to show on your account's activity.
@@ -16,3 +18,18 @@ Clone both this repo and the repo you created to the same folder. It's important
 
 If you chose to name your private repo something else change line #30 in main.cpp and compile.
 
+#Scheduling the executable
+
+Edit cronjobs for you user
+
+```
+crontab -e
+```
+
+add the line to your cron scheduler, this particular line runs the executable every day at 14:00
+
+```
+0 14 * * * /path/to/simulator
+```
+
+Save and exit. 
