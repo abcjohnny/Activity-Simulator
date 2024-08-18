@@ -1,6 +1,6 @@
 # Activity-Simulator
 
-#Setting up
+## Setting up
 
 Setup Github SSH key access on the machine you plan to use this on.
 
@@ -18,7 +18,7 @@ Clone both this repo and the repo you created to the same folder. It's important
 
 If you chose to name your private repo something else change line #30 in main.cpp and compile.
 
-#Scheduling the executable
+## Scheduling the executable
 
 Edit cronjobs for you user
 
