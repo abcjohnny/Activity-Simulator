@@ -18,18 +18,4 @@ Clone both this repo and the repo you created to the same folder. It's important
 
 If you chose to name your private repo something else change line #30 in main.cpp and compile.
 
-## Scheduling the executable
-
-Edit cronjobs for you user
-
-```
-crontab -e
-```
-
-add the line to your cron scheduler, this particular line runs the executable every day at 14:00
-
-```
-0 14 * * * /path/to/simulator
-```
-
-Save and exit. 
+Run the executable. This will take some time as all there is a 2 second delay implemented between commits.
