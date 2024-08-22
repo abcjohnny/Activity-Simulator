@@ -18,4 +18,4 @@ Clone both this repo and the repo you created to the same folder. It's important
 
 If you chose to name your private repo something else change line #27 in main.cpp and compile.
 
-Run the executable. This will take some time as all there is a 2 second delay implemented between commits.
+Run the executable. This will take some time as there is a 2 second delay implemented between commits.
