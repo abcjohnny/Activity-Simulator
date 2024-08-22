@@ -16,6 +16,6 @@ Create a "log.txt" file in the repo you just created, this will be where changes
 
 Clone both this repo and the repo you created to the same folder. It's important both repositories are at the same level or the program will not work.
 
-If you chose to name your private repo something else change line #30 in main.cpp and compile.
+If you chose to name your private repo something else change line #27 in main.cpp and compile.
 
 Run the executable. This will take some time as all there is a 2 second delay implemented between commits.
