@@ -20,35 +20,43 @@ int getRandom(){
 }
 
 int main(){
-
     auto now = std::chrono::system_clock::now();
-    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-    std::tm* now_tm = std::localtime(&now_c);
 
-    //change the following 2 lines to suit your needs
+    //defines the file and filepath where commits are made
     std::string fileName = "log.txt";
     std::string filePathCommand = "cd .. && cd The-test-subject/ ";
-
-    std::ostringstream oss;
-    oss << std::put_time(now_tm, "%d-%m-%Y");
     
-    std::string formatted_date = oss.str();
+    //one day is 24 hours
+    const auto one_day = std::chrono::hours(24);
 
-    std::string command = filePathCommand + "&& echo \"\n "+ formatted_date + "\" >> " + fileName;
-    system(command.c_str());
+    //loop through the last year
+    for (int i=0; i<365; i++){
 
-    int rnd = getRandom();
+        //subtract i days from current date and turn that into a string
+        auto current_date = now - one_day * i;
+        std::time_t time_t_date = std::chrono::system_clock::to_time_t(current_date);
+        std::tm* tm_date = std::localtime(&time_t_date);
+        std::ostringstream date_stream;
+        date_stream << std::put_time(tm_date, "%Y-%m-%d");
+        std::string date_string = date_stream.str();
 
-    std::cout << "Random number: " << rnd << '\n';
-    for (int i=0; i<rnd; i++){
+        //defines a command that appends the current date to the log file and runs it
+        std::string command = filePathCommand + "&& echo \"\n "+ date_string + "\" >> " + fileName;
+        system(command.c_str());
 
-        std::string sub_command = filePathCommand + "&& echo \" Commit #" + std::to_string(i) + "\" >> " + fileName + 
-        "&& git add . && git commit -m \"abc\" && git push";
-        system(sub_command.c_str());
-        std::cout << i << '\n';
-        std::this_thread::sleep_for(std::chrono::seconds(2));
+        int rnd = getRandom();
+        //for debugging purposes
+        std::cout << "Random number: " << rnd << '\n';
 
+        for (int i=0; i<rnd; i++){
+            
+            std::string sub_command = filePathCommand + "&& echo \" Commit #" + std::to_string(i + 1) + "\" >> " + fileName + 
+            "&& git add . && git commit --date=\"" + date_string + "\" -m \"abc\" && git push";
+            system(sub_command.c_str());
+            std::cout << i << '\n';
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
+        }   
     }
 
     return 0;
